@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+const { PrismaClient } = require("@prisma/client");
 import { Room } from "@prisma/client";
 
 type RoomType = Room;
@@ -10,14 +10,13 @@ async function main() {
   const honorBadges = await prisma.honorBadge.createMany({
     data: [
       { name: "Administrador", color: "bg-red-500", icon: "UserCheck" },
-      { name: "Moderador", color: "bg-yellow-500", icon: "UserShield" },
-      { name: "Professor", color: "bg-green-500", icon: "UserGraduate" },
+      { name: "Moderador", color: "bg-yellow-500", icon: "ShieldCheck" },
+      { name: "Professor", color: "bg-green-500", icon: "GraduationCap" },
       { name: "Estudante", color: "bg-blue-500", icon: "User" },
     ],
   });
 
   // Criar salas e atividade
-  // Buscar professor a partir do role teacher
   const professor = await prisma.user.findFirst({
     where: { role: "teacher" },
   });
