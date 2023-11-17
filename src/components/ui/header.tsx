@@ -14,6 +14,7 @@ import { ModeToggle } from "./theme-button";
 import HonorBadge from "@/app/(home)/components/honor-badge";
 import User from "@/app/(home)/components/user";
 import Login from "@/app/(home)/components/login";
+import CreateRoom from "@/app/(home)/components/create-room";
 
 const Header = () => {
 
@@ -44,30 +45,7 @@ const Header = () => {
               Atividades
             </Button>
 
-            <Button variant="outline" className="w-full text-left">
-              <DoorOpen className="mr-2" size="16" />
-              Entrar numa sala
-            </Button>
-
-            {/* {
-              status === "authenticated" && data?.user && (
-                <div className="flex flex-col gap-2">
-                  {data.user.role === "student" ? (
-                    <Button variant="outline" className="w-full text-left">
-                      <DoorOpen className="mr-2" size="16" />
-                      Entrar numa sala
-                    </Button>
-                  ) : (
-                    data.user.role === "teacher" && (
-                      <Button variant="outline" className="w-full text-left">
-                        <DoorOpen className="mr-2" size="16" />
-                        Criar uma sala
-                      </Button>
-                    )
-                  )}
-                </div>
-              )
-            } */}
+            <CreateRoom />
           </div>
         </SheetContent>
       </Sheet>

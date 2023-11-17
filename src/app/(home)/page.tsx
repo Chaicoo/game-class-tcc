@@ -1,10 +1,14 @@
 import { prismaClient } from "@/lib/prisma";
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import Login from "./components/login";
+import { WholeWord } from "lucide-react";
 
 export default async function Home() {
   const rooms = await prismaClient.room.findMany();
-  
+
   const roomsWithProfessors = await Promise.all(
     rooms.map(async (room) => {
       const professor = await prismaClient.user.findUnique({
@@ -14,6 +18,21 @@ export default async function Home() {
       return { ...room, professor };
     })
   );
+
+  const session = await getServerSession(authOptions);
+
+  if (!session || !session.user) {
+    return (
+      <div className="flex h-full flex-col items-center justify-center gap-2 p-5">
+        <h2 className="font-bold">Acesso Negado!</h2>
+        <p className="text-sm opacity-60">Faça login para ver suas salas</p>
+        <div className="mt-4 flex flex-col gap-2">
+          <Login />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div>
       <div className="mt-10 px-5">
