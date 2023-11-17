@@ -51,12 +51,12 @@ model User {
 }
 
 model HonorBadge {
-  id    String @id @default(cuid())
-  name  String
-  color String
-  icon  String
-  users User[]
-
+  id         String   @id @default(cuid())
+  name       String
+  color      String
+  icon       String
+  idStudent  String   // Adicionando idStudent como uma chave estrangeira
+  user       User     @relation(fields: [idStudent], references: [id])
   @@unique([name, color, icon])
 }
 

@@ -4,6 +4,8 @@ import { authOptions } from "@/lib/auth";
 import { prismaClient } from "@/lib/prisma";
 import { DoorOpen } from "lucide-react";
 import { isAuthenticated } from "@/utils/isAuthenticated";
+import { EnterRoomModal } from "./enter-room-modal";
+import { CreateRoomModal } from "./create-room-modal";
 
 export default async function CreateRoom() {
     const session = await getServerSession(authOptions);
@@ -18,15 +20,9 @@ export default async function CreateRoom() {
         <>
             {
                 isTeacher ? (
-                    <Button variant="outline" className="w-full text-left">
-                        <DoorOpen className="mr-2" size="16" />
-                        Criar uma sala
-                    </Button>
+                    <CreateRoomModal />
                 ) : (
-                    <Button variant="outline" className="w-full text-left">
-                        <DoorOpen className="mr-2" size="16" />
-                        Entrar numa sala
-                    </Button>
+                    <EnterRoomModal />
                 )
             }
         </>
