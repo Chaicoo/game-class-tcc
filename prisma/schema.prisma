@@ -37,36 +37,51 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-model User {
-  id            String       @id @default(cuid())
-  name          String?
-  email         String?      @unique
-  emailVerified DateTime?
-  image         String?
-  role          String      @default("student")
-  accounts      Account[]
-  sessions      Session[]
-  Room          Room[]
-  honorBadge    HonorBadge[]
-}
+model RoomMembership {
+  id          String @id @default(cuid())
+  roomId      String
+  studentId   String
+  professorId String
 
-model HonorBadge {
-  id         String   @id @default(cuid())
-  name       String
-  color      String
-  icon       String
-  idStudent  String   // Adicionando idStudent como uma chave estrangeira
-  user       User     @relation(fields: [idStudent], references: [id])
-  @@unique([name, color, icon])
+  room      Room    @relation(fields: [roomId], references: [id])
+  User      User?   @relation(fields: [userId], references: [id])
+  userId    String?
+
+  @@unique([roomId, studentId], name: "UniqueRoomStudent")
 }
 
 model Room {
-  id          String     @id @default(cuid())
-  code        String     @unique // Código da sala
+  id          String           @id @default(cuid())
+  code        String           @unique // Código da sala
   name        String // Nome da sala
-  professor   User       @relation(fields: [professorId], references: [id])
-  professorId String // ID do professor que criou a sala
   activities  Activity[] // Relacionamento com as atividades da sala
+  memberships RoomMembership[]
+}
+
+model User {
+  id             String           @id @default(cuid())
+  name           String?
+  email          String?          @unique
+  emailVerified  DateTime?
+  image          String?
+  role           String           @default("student")
+  accounts       Account[]
+  sessions       Session[]
+  memberships    RoomMembership[]
+  HonorBadge     HonorBadge[]
+
+  @@map("users")
+}
+
+model HonorBadge {
+  id        String @id @default(cuid())
+  name      String
+  color     String
+  icon      String
+  idStudent String // Adicionando idStudent como uma chave estrangeira
+  user      User   @relation(fields: [idStudent], references: [id])
+
+  @@unique([name, color, icon])
 }
 
 model Activity {
