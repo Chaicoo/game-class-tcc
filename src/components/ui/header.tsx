@@ -56,7 +56,7 @@ const Header = () => {
       </Sheet>
 
       <h1 className="text-lg font-semibold">
-        <span className="text-primary">Game</span> Class
+        <span className="text-primary">Game</span> Class_
       </h1>
 
       <Sheet>

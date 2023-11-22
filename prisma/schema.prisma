@@ -56,6 +56,7 @@ model Room {
   name        String // Nome da sala
   activities  Activity[] // Relacionamento com as atividades da sala
   memberships RoomMembership[]
+  professorId String
 }
 
 model User {
