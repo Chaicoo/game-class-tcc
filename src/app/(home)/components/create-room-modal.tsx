@@ -20,12 +20,16 @@ import {
 } from "@/components/ui/alert-dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { PlusSquareIcon } from "lucide-react"
 
 export function CreateRoomModal() {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button variant="outline">Crie um nova sala</Button>
+                <Button variant="outline">
+                    <PlusSquareIcon className="mr-2" size="16" />
+                    Criar sala
+                </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>

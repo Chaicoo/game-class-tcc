@@ -23,9 +23,9 @@ export function EnterRoomModal() {
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
-                    <DialogTitle>Digite o código da sala</DialogTitle>
+                    <DialogTitle>Digite o código</DialogTitle>
                     <DialogDescription>
-                        Solicite o código de acesso da sala ao seu professor para entrar na sala.
+                        Solicite o código de acesso ao seu professor para entrar na sala.
                     </DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-4 py-4">
