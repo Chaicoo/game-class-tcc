@@ -73,7 +73,7 @@ export default async function Home() {
         <p className="text-left text-2xl font-semibold ml-4">Salas</p>
       </div>
 
-      <div className="mt-10 ml-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="mt-10 ml-10 mr-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {roomsWithProfessors.map((room) => (
           <Link key={room.id} href={`/room/${room.id}`}>
             <Card className="flex flex-col h-28">
