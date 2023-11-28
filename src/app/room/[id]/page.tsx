@@ -1,11 +1,13 @@
 import { prismaClient } from "@/lib/prisma";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ChevronRightIcon, BookCopyIcon, BookOpenIcon } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Ranking from "./components/ranking";
+import CreateActivityModal from "./components/create-activity";
+import PublisherContent from "./components/publisher-content";
 
 const Room = async ({ params }: any) => {
   const materialsRoom = [
@@ -72,6 +74,12 @@ const Room = async ({ params }: any) => {
         <Button variant="outline" size="icon">
           <ChevronRightIcon className="h-4 w-4" />
         </Button>
+      </div>
+
+
+      <div className="flex flex-row justify-end gap-4 mr-4">
+        <CreateActivityModal />
+        <PublisherContent />
       </div>
 
       <div className="mt-8 mx-auto flex  flex-col items-center justify-center">
