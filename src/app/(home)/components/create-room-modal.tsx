@@ -50,7 +50,7 @@ export function CreateRoomModal() {
                         </AlertDialogTrigger>
                         <AlertDialogContent>
                             <AlertDialogHeader>
-                                <AlertDialogTitle>Código</AlertDialogTitle>
+                                <AlertDialogTitle>Código: 9HOMXFG5</AlertDialogTitle>
                                 <AlertDialogDescription>
                                     Esse é o código da sua sala, compartilhe ele com seus alunos para eles terem acesso a seus materiais e atividades.
                                 </AlertDialogDescription>
